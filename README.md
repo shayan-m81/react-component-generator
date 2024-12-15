@@ -21,12 +21,10 @@ A customizable Node.js script to automate generating React components with TypeS
 
    ```
    git clone https://github.com/shayan-m81/react-component-generator.git
-   
 2. Navigate to the project directory:
 
    ```
    cd react-component-generator
-   
 3. Install dependencies:
 
    ```
@@ -39,25 +37,23 @@ A customizable Node.js script to automate generating React components with TypeS
 
 To generate a new React component, run the script with the following command:
 
-    ```
-    node generate.js [ComponentName] [CustomPath]
-
+   ```
+   node generate.js [ComponentName] [CustomPath]
+   ```
     
 ComponentName: The name of the React component you want to create. It will be automatically converted to kebab-case for file naming.
 CustomPath (optional): The directory where the component should be created. Defaults to src/components/shared if not specified.
 
 ## Example:
 
-    ```
-    node generate.js Button src/components/ui
+   ```
+   node generate.js Button src/components/ui
+   ```
 
 This will generate a Button component in the directory src/components/ui/button with the following files:
 
-  button/
-  ├── button.tsx
-  ├── button.type.ts
-  ├── button.stories.tsx
-  └── index.ts
+  <pre> ``` button/ ├── button.tsx ├── button.type.ts ├── button.stories.tsx └── index.ts ``` </pre>
+
 
 ### Method 2: Using an NPM Script
 
@@ -69,16 +65,73 @@ You can also integrate the script into your package.json for easier usage. Add t
 
 Now, you can generate components using the following command:
 
-    ```
-    npm run generate-component [ComponentName] [CustomPath]
-
+   ```
+   npm run generate-component [ComponentName] [CustomPath]
+   ```
 ## Example:
 
-    ```
-    npm run generate-component Button src/components/ui
-    
+   ```
+   npm run generate-component Button src/components/ui
+   ```
 This will generate the same output as Method 1.
 
 
 ## Customizing Templates
 
+All templates are defined inline in the generate.js script. You can modify the following sections to suit your project needs:
+
+1. Component Template:
+   ```
+   const componentTemplate = `
+   import type {I{{name}} as Props} from './{{kebabCaseName}}.type';
+
+   export const {{name}}: React.FC<Props> = (Props) => {
+     return <div></div>;
+   };
+   `;
+   ```
+2. Types Template:
+   ```
+   const typesTemplate = `
+   export interface I{{name}} {}
+   `;
+   ```
+3. Storybook Template:
+   ```
+   const storybookTemplate = `
+   import type {Meta, StoryObj} from '@storybook/react';
+   import {{name}} from './{{kebabCaseName}}';
+
+   const meta: Meta<typeof {{name}}> = {
+         title: 'components/{{name}}',
+         component: {{name}},
+   };
+   export default meta;
+
+   export const Default: StoryObj<typeof {{name}}> = {
+         render: (args) => <{{name}} {...args} />,
+         args: {},
+   };
+   `;
+   ```
+4. Index Template:
+   ```
+   const indexTemplate = `
+   export * from './{{kebabCaseName}}';
+   export * from './{{kebabCaseName}}.type';
+   `;
+   ```
+Edit these templates directly in the script to match your preferred coding style or project conventions.
+
+
+## Contributing
+
+Contributions are welcome! Feel free to fork this repository and submit pull requests with your improvements.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Repository Structure
+
+<pre> ``` react-component-generator/ ├── README.md ├── LICENSE ├── generate.js ├── package.json ├── .gitignore └── node_modules/ (ignored in the repository) ``` </pre>
