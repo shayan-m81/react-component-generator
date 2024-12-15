@@ -144,3 +144,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
    ├── .gitignore
    └── node_modules/ (ignored in the repository)
    ```
+This version is fully optimized for GitHub's markdown styling and can be copied directly into a `README.md` file. Let me know if you need further adjustments!
