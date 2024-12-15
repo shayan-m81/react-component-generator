@@ -29,8 +29,6 @@ A customizable Node.js script to automate generating React components with TypeS
 
    ```
    npm install
-
-
 ## Usage
 
 ### Method 1: Using the Script Directly
@@ -52,17 +50,21 @@ CustomPath (optional): The directory where the component should be created. Defa
 
 This will generate a Button component in the directory src/components/ui/button with the following files:
 
-  <pre> ``` button/ ├── button.tsx ├── button.type.ts ├── button.stories.tsx └── index.ts ``` </pre>
-
-
+   ``` 
+   button/
+   ├── button.tsx
+   ├── button.type.ts
+   ├── button.stories.tsx
+   └── index.ts
+   ```
 ### Method 2: Using an NPM Script
 
 You can also integrate the script into your package.json for easier usage. Add the following script to the scripts section of your package.json:
-
-  "scripts": {
-  "generate-component": "node generate.js"
-  }
-
+   ```
+   "scripts": {
+   "generate-component": "node generate.js"
+   }
+   ```
 Now, you can generate components using the following command:
 
    ```
@@ -133,5 +135,12 @@ Contributions are welcome! Feel free to fork this repository and submit pull req
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 ## Repository Structure
-
-<pre> ``` react-component-generator/ ├── README.md ├── LICENSE ├── generate.js ├── package.json ├── .gitignore └── node_modules/ (ignored in the repository) ``` </pre>
+   ```
+   react-component-generator/ 
+   ├── README.md
+   ├── LICENSE
+   ├── generate.js
+   ├── package.json
+   ├── .gitignore
+   └── node_modules/ (ignored in the repository)
+   ```
